@@ -8,9 +8,24 @@ price = 0
 # price based on the size they pick
 if size == "S":
     price += 15
+    if pepperoni == "Y":
+        print(price)
+        price += 2
 elif size == "M":
     price += 20
-elif price == "L":
-    price += 30
+    if pepperoni == "Y":
+        print(price)
+        price += 3
+elif size == "L":
+    price += 25
+    if pepperoni == "Y":
+        print(price)
+        price += 3
 
-print(price)
+
+# price based on added cheeze
+if extra_cheese == "Y":
+    price += 1
+
+
+print(f"The price of your order is ${price}")
