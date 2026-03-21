@@ -29,7 +29,18 @@ if userPath == "Left":
     print("Escaped the hole")
     swimOrWait = input("Would you Swim or wait?\n").capitalize()
     if swimOrWait == "Wait":
-        print()
+        print("Escaped trout")
+        whichDoor = input(
+            "There are 3 doors, which one would you open? Red, Blue or Yellow"
+        ).capitalize()
+        if whichDoor == "Red":
+            print("Burned by fire. Game Over!")
+        elif whichDoor == "Blue":
+            print("Eaten by beasts. Game Over!")
+        elif whichDoor == "Yellow":
+            print("You win!")
+        else:
+            print("Game Over!")
     else:
         print("Attacked by trout. Game Over")
 else:
