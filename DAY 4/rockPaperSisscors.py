@@ -23,3 +23,23 @@ elif shape[userInput] == "Scissors" and randomShape == "Paper":
         f"""You picked {shape[userInput]} while Computer picked {randomShape}.
           You Won."""
     )
+elif shape[userInput] == "Paper" and randomShape == "Scissors":
+    print(
+        f"""You Picked {shape[userInput]} while Computer Picked {randomShape}.
+          Computer Won"""
+    )
+elif shape[userInput] == "Paper" and randomShape == "Rock":
+    print(
+        f"""You Picked {shape[userInput]} while Computer Picked {randomShape}.
+          You Won"""
+    )
+elif randomShape == "Paper" and shape[userInput] == "Rock":
+    print(
+        f"""You Picked {shape[userInput]} while Computer Picked {randomShape}.
+               \nComputer Won"""
+    )
+elif randomShape == shape[userInput]:
+    print(
+        f"""You Picked {shape[userInput]} while Computer Picked {randomShape}.
+          Its a tie"""
+    )
