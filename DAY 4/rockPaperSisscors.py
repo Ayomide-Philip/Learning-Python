@@ -4,9 +4,7 @@ userInput = int(input("Type 0 for Rock , 1 for Paper, 2 for Scissors \n"))
 
 shape = ["Rock", "Paper", "Scissors"]
 
-randomGuess = int(random.random() * len(shape))
-
-randomShape = shape[randomGuess]
+randomShape = shape[random.randint(0, len(shape) - 1)]
 
 if shape[userInput] == "Rock" and randomShape == "Scissors":
     print(
@@ -36,7 +34,7 @@ elif shape[userInput] == "Paper" and randomShape == "Rock":
 elif randomShape == "Paper" and shape[userInput] == "Rock":
     print(
         f"""You Picked {shape[userInput]} while Computer Picked {randomShape}.
-               \nComputer Won"""
+        Computer Won"""
     )
 elif randomShape == shape[userInput]:
     print(
