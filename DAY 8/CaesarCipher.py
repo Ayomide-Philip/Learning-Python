@@ -33,10 +33,8 @@ shift = int(input("Type the shift number:\n"))
 
 
 def encode(text_to_encode, shift_number):
-    print(text_to_encode, shift_number)
     stringOfEncode = ""
     for texts in text_to_encode:
-        print(texts)
         if alphabet.count(texts) == 0:
             stringOfEncode += texts
         else:
