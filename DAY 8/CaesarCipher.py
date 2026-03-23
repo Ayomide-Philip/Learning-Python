@@ -72,3 +72,11 @@ while encodeOrDecode:
         decode(text_to_decode=text, shift_number=shift)
     else:
         print("Invalid Input")
+
+    newSession = input(
+        "Would you encode or decode a new message? Type 'Yes' or 'No'\n"
+    ).capitalize()
+    if newSession == "Yes":
+        encodeOrDecode = encodeOrDecode
+    else:
+        encodeOrDecode = not encodeOrDecode
