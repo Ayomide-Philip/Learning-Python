@@ -44,7 +44,6 @@ def encode(text_to_encode, shift_number):
                 stringOfEncode += alphabet[newIndex]
             else:
                 stringOfEncode += alphabet[(new_shift_index)]
-
     print(stringOfEncode)
 
 
