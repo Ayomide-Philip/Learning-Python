@@ -38,11 +38,12 @@ def encode(text_to_encode, shift_number):
         if alphabet.count(texts) == 0:
             stringOfEncode += texts
         else:
-            if len(alphabet) <= (alphabet.index(texts) + shift_number):
-                newIndex = (alphabet.index(texts) + shift_number) % len(alphabet)
+            new_shift_index = alphabet.index(texts) + shift_number
+            if len(alphabet) <= (new_shift_index):
+                newIndex = (new_shift_index) % len(alphabet)
                 stringOfEncode += alphabet[newIndex]
             else:
-                stringOfEncode += alphabet[(alphabet.index(texts) + shift_number)]
+                stringOfEncode += alphabet[(new_shift_index)]
 
     print(stringOfEncode)
 
