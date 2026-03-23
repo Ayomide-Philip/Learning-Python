@@ -20,8 +20,18 @@ for dash in blank_dash:
     blank_dash_to_list.append(dash)
 
 
+def convertListToString(list):
+    word = ""
+    for i in list:
+        word += i
+    return word
+
+
 while startGame:
     if totalLife > 0:
+        print(
+            f"*******************************{totalLife}/6*********************************"
+        )
         if blank_dash_to_list.count("_") != 0:
             userInput = input("Guess a letter?\n")
             if (
@@ -29,18 +39,16 @@ while startGame:
                 and blank_dash_to_list.count(userInput) == 0
             ):
                 for i in range(0, len(random_word_to_list)):
-                    print(random_word_to_list)
                     if random_word_to_list[i] == userInput:
                         blank_dash_to_list[i] = userInput
-                print(blank_dash_to_list)
+                print(convertListToString(blank_dash_to_list))
             else:
                 totalLife -= 1
                 print(f"You have {totalLife} live left.")
         else:
-            correctWord = ""
-            for blank in blank_dash_to_list:
-                correctWord += blank
-            print(f"You Won, the correct word is {correctWord}. Game Over!")
+            print(
+                f"You Won, the correct word is {convertListToString(blank_dash_to_list)}. Game Over!"
+            )
             startGame = not startGame
     else:
         if totalLife == 0:
