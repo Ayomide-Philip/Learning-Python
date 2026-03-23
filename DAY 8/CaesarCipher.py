@@ -26,12 +26,7 @@ alphabet = [
     "y",
     "z",
 ]
-
-direction = input(
-    "Type 'encode' to encrypt, type 'decode' to decrypt:e.g encode\n"
-).lower()
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+encodeOrDecode = True
 
 
 def encode(text_to_encode, shift_number):
@@ -49,9 +44,6 @@ def encode(text_to_encode, shift_number):
     print(stringOfEncode)
 
 
-encode(text_to_encode=text, shift_number=shift)
-
-
 def decode(text_to_decode, shift_number):
     stringOfDecode = ""
     for texts in text_to_decode:
@@ -67,4 +59,16 @@ def decode(text_to_decode, shift_number):
     print(stringOfDecode)
 
 
-decode(text, shift)
+while encodeOrDecode:
+    direction = input(
+        "Type 'encode' to encrypt, type 'decode' to decrypt:e.g encode\n"
+    ).lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    if direction == "encode":
+        encode(text_to_encode=text, shift_number=shift)
+    elif direction == "decode":
+        decode(text_to_decode=text, shift_number=shift)
+    else:
+        print("Invalid Input")
