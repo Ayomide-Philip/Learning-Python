@@ -20,11 +20,11 @@ for dash in blank_dash:
     blank_dash_to_list.append(dash)
 
 
-def convertListToString(list):
-    word = ""
-    for i in list:
-        word += i
-    return word
+def convertListToString(inputtedList):
+    listToWord = ""
+    for i in inputtedList:
+        listToWord += i
+    return listToWord
 
 
 while startGame:
