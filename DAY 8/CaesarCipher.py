@@ -27,6 +27,26 @@ alphabet = [
     "z",
 ]
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+# direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
+
+
+def encode(text_to_encode, shift_number):
+    print(text_to_encode, shift_number)
+    stringOfEncode = ""
+    for texts in text_to_encode:
+        print(texts)
+        if alphabet.count(texts) == 0:
+            stringOfEncode += texts
+        else:
+            if len(alphabet) <= (alphabet.index(texts) + shift_number):
+                newIndex = (alphabet.index(texts) + shift_number) % len(alphabet)
+                stringOfEncode += alphabet[newIndex]
+            else:
+                stringOfEncode += alphabet[(alphabet.index(texts) + shift_number)]
+
+    print(stringOfEncode)
+
+
+encode(text_to_encode=text, shift_number=shift)
