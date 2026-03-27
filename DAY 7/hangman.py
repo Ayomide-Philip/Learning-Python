@@ -22,8 +22,8 @@ for dash in blank_dash:
 
 def convertListToString(inputtedList):
     listToWord = ""
-    for i in inputtedList:
-        listToWord += i
+    for w in inputtedList:
+        listToWord += w
     return listToWord
 
 
