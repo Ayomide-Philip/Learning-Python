@@ -11,30 +11,29 @@ def clear_screen():
         subprocess.run("clear", shell=True)
 
 
-clear_screen()
-# def getBidderWithHighestAmount(bidList):
-#     highestBid = 0
-#     highestBidderName = ""
-#     for i in range(0, len(bidList)):
-#         if highestBid < bidList[i]["amount"]:
-#             highestBid = bidList[i]["amount"]
-#             highestBidderName = bidList[i]["name"]
-#     return {"name": highestBidderName, "amount": highestBid}
+def getBidderWithHighestAmount(bidList):
+    highestBid = 0
+    highestBidderName = ""
+    for i in range(0, len(bidList)):
+        if highestBid < bidList[i]["amount"]:
+            highestBid = bidList[i]["amount"]
+            highestBidderName = bidList[i]["name"]
+    return {"name": highestBidderName, "amount": highestBid}
 
 
-# isAuctionEnd = False
-# bidderList = []
+isAuctionEnd = False
+bidderList = []
 
-# while not isAuctionEnd:
-#     name = input("What is your name?:")
-#     biddingAmount = int(input("What is your bid?: $"))
-#     bidderList.append({"name": name, "amount": biddingAmount})
-#     areThereAnyOtherBidders = input(
-#         "Are there any other bidders? Type 'yes' or 'no'."
-#     ).lower()
-#     if areThereAnyOtherBidders == "yes":
-#         print("Continuing the good work")
-#     else:
-#         isAuctionEnd = not isAuctionEnd
-#         winner = getBidderWithHighestAmount(bidderList)
-#         print(f"The Winner is {winner['name']} with an amount of ${winner["amount"]} ")
+while not isAuctionEnd:
+    name = input("What is your name?:")
+    biddingAmount = int(input("What is your bid?: $"))
+    bidderList.append({"name": name, "amount": biddingAmount})
+    areThereAnyOtherBidders = input(
+        "Are there any other bidders? Type 'yes' or 'no'."
+    ).lower()
+    if areThereAnyOtherBidders == "yes":
+        clear_screen()
+    else:
+        isAuctionEnd = not isAuctionEnd
+        winner = getBidderWithHighestAmount(bidderList)
+        print(f"The Winner is {winner['name']} with an amount of ${winner["amount"]} ")
