@@ -16,6 +16,14 @@ if userCards.count(10) != 0 and userCards.count(11) != 0:
 elif dealerCards.count(10) != 0 and dealerCards.count(11) != 0:
     print("Dealer Wins")
 
+    def letUserDrawAnotherCardOrNot():
+        newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
+        if newCard == "y":
+            userCards.append(random.choice(cards))
+            return True
+        elif newCard == "n":
+            return False
+
 
 userHasNewCard = True
 while userHasNewCard:
@@ -32,21 +40,9 @@ while userHasNewCard:
                 print("User Busts, Dealer Wins")
                 userHasNewCard = not userHasNewCard
             else:
-                newCard = input(
-                    "Enter 'y' to draw another card, and 'n' to skip?:"
-                ).lower()
-                if newCard == "y":
-                    userCards.append(random.choice(cards))
-                    userHasNewCard = True
-                else:
-                    userHasNewCard = False
+                userHasNewCard = letUserDrawAnotherCardOrNot()
         else:
             print("User Burst, Dealer Wins")
             userHasNewCard = False
     else:
-        newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
-        if newCard == "y":
-            userCards.append(random.choice(cards))
-            userHasNewCard = True
-        else:
-            userHasNewCard = False
+        userHasNewCard = letUserDrawAnotherCardOrNot()
