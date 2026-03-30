@@ -63,3 +63,6 @@ while dealerHasNewCard:
             dealerCards.append(random.choice(cards))
         else:
             dealerHasNewCard = False
+    else:
+        dealerHasNewCard = False
+
