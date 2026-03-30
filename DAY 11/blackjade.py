@@ -16,14 +16,16 @@ if userCards.count(10) != 0 and userCards.count(11) != 0:
 elif dealerCards.count(10) != 0 and dealerCards.count(11) != 0:
     print("Dealer Wins")
 
-    def letUserDrawAnotherCardOrNot():
-        newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
-        if newCard == "y":
-            userCards.append(random.choice(cards))
-            return True
-        elif newCard == "n":
 
-            return False
+def letUserDrawAnotherCardOrNot():
+    newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
+    if newCard == "y":
+        userCards.append(random.choice(cards))
+        return True
+    elif newCard == "n":
+        return False
+    else:
+        return False
 
 
 userHasNewCard = True
@@ -47,3 +49,17 @@ while userHasNewCard:
             userHasNewCard = False
     else:
         userHasNewCard = letUserDrawAnotherCardOrNot()
+
+dealerHasNewCard = True
+while dealerHasNewCard:
+    print(dealerCards)
+    totalDealerScore = module.calculateTotalCards(dealerCards)
+    if totalDealerScore < 17:
+        dealerCards.append(random.choice(cards))
+
+    if totalDealerScore > 21 and dealerCards.count(11) != 0:
+        totalDealerAceScore = module.calculateTotalCardIfAce(dealerCards)
+        if totalDealerAceScore < 17:
+            dealerCards.append(random.choice(cards))
+        else:
+            dealerHasNewCard = False
