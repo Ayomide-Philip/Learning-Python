@@ -11,28 +11,42 @@ def checkComputerTotalScore(computerCards, totalUserAceCards):
 
     print(computerCards)
     if module.calculateTotalCards(computerCards) > 21:
-        print("Computer Card Greater than 17")
         if computerCards.count(11) > 0:
-            print("Computer Has an Ace")
             totalComputerAceCards = module.calculateTotalCardIfAce(computerCards)
             if totalComputerAceCards > 21:
-                print("Computer Loose, User Win")
+                print(f"User Card: {userCards}")
+                print(f"Computer Card: {computerCards}")
+                print("User Wins, Computer loose")
             else:
                 if totalComputerAceCards == totalUserAceCards:
+                    print(f"User Card: {userCards}")
+                    print(f"Computer Card: {computerCards}")
                     print("Its a draw")
                 elif totalComputerAceCards > totalUserAceCards:
+                    print(f"User Card: {userCards}")
+                    print(f"Computer Card: {computerCards}")
                     print("Computer Won, User Loose")
                 elif totalUserAceCards > totalComputerAceCards:
+                    print(f"User Card: {userCards}")
+                    print(f"Computer Card: {computerCards}")
                     print("User Won, Computer Loose")
         else:
+            print(f"User Card: {userCards}")
+            print(f"Computer Card: {computerCards}")
             print("Computer Loose, User Wins")
     else:
         totalComputerAceCards = module.calculateTotalCards(computerCards)
         if totalComputerAceCards == totalUserAceCards:
+            print(f"User Card: {userCards}")
+            print(f"Computer Card: {computerCards}")
             print("Its a draw")
         elif totalComputerAceCards > totalUserAceCards:
+            print(f"User Card: {userCards}")
+            print(f"Computer Card: {computerCards}")
             print("Computer Won, User Loose")
         elif totalUserAceCards > totalComputerAceCards:
+            print(f"User Card: {userCards}")
+            print(f"Computer Card: {computerCards}")
             print("User Won, Computer Loose")
 
 
@@ -47,13 +61,21 @@ while doYouWantToPlayBlackJade:
         print(f"Computer first card:{computerCard[0]}")
         if userCards.count(10) > 0 and userCards.count(11) > 0:
             if computerCard.count(10) == 0 or computerCard.count(11) == 0:
+                print(f"User Card: {userCards}")
+                print(f"Computer Card: {computerCard}")
                 print("User Won")
             else:
+                print(f"User Card: {userCards}")
+                print(f"Computer Card: {computerCard}")
                 print("It's a Draw")
         elif computerCard.count(10) > 0 and computerCard.count(11) > 0:
             if userCards.count(10) == 0 or userCards.count(11) == 0:
+                print(f"User Card: {userCards}")
+                print(f"Computer Card: {computerCard}")
                 print("Computer Wins")
             else:
+                print(f"User Card: {userCards}")
+                print(f"Computer Card: {computerCard}")
                 print("Its a draw")
         else:
             userNewCards = True
@@ -62,6 +84,8 @@ while doYouWantToPlayBlackJade:
                     if userCards.count(11) > 0:
                         totalUserAceCard = module.calculateTotalCardIfAce(userCards)
                         if totalUserAceCard > 21:
+                            print(f"User Card: {userCards}")
+                            print(f"Computer Card: {computerCard}")
                             print("Computer Wins")
                             userNewCards = False
                         else:
@@ -80,6 +104,8 @@ while doYouWantToPlayBlackJade:
                                     totalUserAceCards=totalUserAceCard,
                                 )
                     else:
+                        print(f"User Card: {userCards}")
+                        print(f"Computer Card: {computerCard}")
                         print("Computer wins")
                         userNewCards = False
                 else:
