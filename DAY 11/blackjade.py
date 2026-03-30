@@ -3,6 +3,39 @@ import random
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 doYouWantToPlayBlackJade = True
+
+
+def checkComputerTotalScore(computerCards, totalUserAceCards):
+    while module.calculateTotalCards(computerCards) < 17:
+        computerCards.append(random.choice(cards))
+
+    print(computerCards)
+    if module.calculateTotalCards(computerCards) > 21:
+        print("Computer Card Greater than 17")
+        if computerCards.count(11) > 0:
+            print("Computer Has an Ace")
+            totalComputerAceCards = module.calculateTotalCardIfAce(computerCards)
+            if totalComputerAceCards > 21:
+                print("Computer Loose, User Win")
+            else:
+                if totalComputerAceCards == totalUserAceCards:
+                    print("Its a draw")
+                elif totalComputerAceCards > totalUserAceCards:
+                    print("Computer Won, User Loose")
+                elif totalUserAceCards > totalComputerAceCards:
+                    print("User Won, Computer Loose")
+        else:
+            print("Computer Loose, User Wins")
+    else:
+        totalComputerAceCards = module.calculateTotalCards(computerCards)
+        if totalComputerAceCards == totalUserAceCards:
+            print("Its a draw")
+        elif totalComputerAceCards > totalUserAceCards:
+            print("Computer Won, User Loose")
+        elif totalUserAceCards > totalComputerAceCards:
+            print("User Won, Computer Loose")
+
+
 while doYouWantToPlayBlackJade:
     playBlackJack = input("Do you want to play a game of Blackjack? Type 'y' or 'n':")
     if playBlackJack == "y":
@@ -26,9 +59,7 @@ while doYouWantToPlayBlackJade:
             userNewCards = True
             while userNewCards:
                 if module.calculateTotalCards(userCards) > 21:
-                    print("User Card Greater than 21")
                     if userCards.count(11) > 0:
-                        print("There is an Ace in user Card")
                         totalUserAceCard = module.calculateTotalCardIfAce(userCards)
                         if totalUserAceCard > 21:
                             print("Computer Wins")
@@ -44,8 +75,11 @@ while doYouWantToPlayBlackJade:
                                 )
                             else:
                                 userNewCards = False
+                                checkComputerTotalScore(
+                                    computerCards=computerCard,
+                                    totalUserAceCards=totalUserAceCard,
+                                )
                     else:
-                        print("User Has No Ace")
                         print("Computer wins")
                         userNewCards = False
                 else:
@@ -57,6 +91,11 @@ while doYouWantToPlayBlackJade:
                         )
                     else:
                         userNewCards = False
+                        checkComputerTotalScore(
+                            computerCards=computerCard,
+                            totalUserAceCards=module.calculateTotalCards(userCards),
+                        )
+
     else:
         doYouWantToPlayBlackJade = not doYouWantToPlayBlackJade
         print("Quitting!")
