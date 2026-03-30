@@ -13,3 +13,13 @@ def calculateTotalCards(cards):
     for card in cards:
         totalCard += card
     return totalCard
+
+
+def calculateTotalCardIfAce(cards):
+    totalCard = 0
+    for card in cards:
+        if card == 11:
+            totalCard += 1
+        else:
+            totalCard += card
+    return totalCard
