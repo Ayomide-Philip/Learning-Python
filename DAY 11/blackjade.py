@@ -34,14 +34,29 @@ while doYouWantToPlayBlackJade:
                             print("Computer Wins")
                             userNewCards = False
                         else:
-                            print("Loop through the who code again")
+                            newCard = input(
+                                "Type 'y' to get another card, type 'n' to pass:"
+                            )
+                            if newCard == "y":
+                                userCards.append(random.choice(cards))
+                                print(
+                                    f"Your Current Card {userCards}, current total {module.calculateTotalCards(userCards)}"
+                                )
+                            else:
+                                userNewCards = False
                     else:
                         print("User Has No Ace")
                         print("Computer wins")
                         userNewCards = False
                 else:
-                    print(False)
-                    userNewCards = False
+                    newCard = input("Type 'y' to get another card, type 'n' to pass:")
+                    if newCard == "y":
+                        userCards.append(random.choice(cards))
+                        print(
+                            f"Your Current Card {userCards}, current total {module.calculateTotalCards(userCards)}"
+                        )
+                    else:
+                        userNewCards = False
     else:
         doYouWantToPlayBlackJade = not doYouWantToPlayBlackJade
         print("Quitting!")
