@@ -14,3 +14,9 @@ if userCards.count(10) != 0 and userCards.count(11) != 0:
         print("User Wins")
 elif dealerCards.count(10) != 0 and dealerCards.count(11) != 0:
     print("Dealer Wins")
+
+print(f"Total User Score: {module.calculateTotalCards(userCards)}")
+print(f"Dealer Total Score:{module.calculateTotalCards(dealerCards)}")
+
+totalUserScore = module.calculateTotalCards(userCards)
+totalDealerScore = module.calculateTotalCards(dealerCards)
