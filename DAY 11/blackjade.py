@@ -1,4 +1,5 @@
 import module
+import random
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
@@ -15,21 +16,46 @@ if userCards.count(10) != 0 and userCards.count(11) != 0:
 elif dealerCards.count(10) != 0 and dealerCards.count(11) != 0:
     print("Dealer Wins")
 
-print(f"Total User Score: {module.calculateTotalCards(userCards)}")
-print(f"Dealer Total Score:{module.calculateTotalCards(dealerCards)}")
 
-totalUserScore = module.calculateTotalCards(userCards)
-totalDealerScore = module.calculateTotalCards(dealerCards)
 userHasNewCard = True
 while userHasNewCard:
+    totalUserScore = module.calculateTotalCards(userCards)
+    totalDealerScore = module.calculateTotalCards(dealerCards)
+    print(f"Total User Score: {totalUserScore}")
+    print(f"Dealer Total Score:{totalDealerScore}")
     if totalUserScore > 21:
         if userCards.count(11) != 0:
             totalUserAceScore = module.calculateTotalCardIfAce(userCards)
             if totalUserAceScore > 21:
+                print(f"User Cards: {userCards}")
+                print(f"Dealer Cards:{dealerCards}")
                 print("User Busts, Dealer Wins")
                 userHasNewCard = not userHasNewCard
             else:
-                print(f"Total User Score: {totalUserAceScore}")
                 newCard = input(
-                    "Type 'y' to draw another card and 'n' to skip?:"
+                    "Enter 'y' to draw another card, and 'n' to skip?:"
                 ).lower()
+                if newCard == "y":
+                    userCards.append(random.choice(cards))
+                    userHasNewCard = True
+                else:
+                    userHasNewCard = False
+        else:
+            print("User Burst, Dealer Wins")
+            userHasNewCard = False
+    else:
+        newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
+        if newCard == "y":
+            userCards.append(random.choice(cards))
+            userHasNewCard = True
+        else:
+            userHasNewCard = False
+
+
+def letUserDrawAnotherCardOrNot():
+    newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
+    if newCard == "y":
+        userCards.append(random.choice(cards))
+        userHasNewCard = True
+    else:
+        userHasNewCard = False
