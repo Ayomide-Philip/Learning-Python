@@ -1,3 +1,4 @@
 .idea
 .git
 desktop.*
+__pycache__
