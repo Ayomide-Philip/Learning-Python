@@ -50,12 +50,3 @@ while userHasNewCard:
             userHasNewCard = True
         else:
             userHasNewCard = False
-
-
-def letUserDrawAnotherCardOrNot():
-    newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
-    if newCard == "y":
-        userCards.append(random.choice(cards))
-        userHasNewCard = True
-    else:
-        userHasNewCard = False
