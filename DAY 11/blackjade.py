@@ -1,5 +1,6 @@
 import module
 import random
+import art
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 doYouWantToPlayBlackJade = True
@@ -53,6 +54,8 @@ def checkComputerTotalScore(computerCards, totalUserAceCards):
 while doYouWantToPlayBlackJade:
     playBlackJack = input("Do you want to play a game of Blackjack? Type 'y' or 'n':")
     if playBlackJack == "y":
+        module.clear_screen()
+        print(art.logo)
         userCards = module.generateTwoRandomCard(cards)
         computerCard = module.generateTwoRandomCard(cards)
         print(

@@ -1,4 +1,6 @@
 import random
+import platform
+import subprocess
 
 
 def generateTwoRandomCard(cards):
@@ -25,10 +27,8 @@ def calculateTotalCardIfAce(cards):
     return totalCard
 
 
-def letUserDrawAnotherCardOrNot(userHasNewCard, userCards, cards):
-    newCard = input("Enter 'y' to draw another card, and 'n' to skip?:").lower()
-    if newCard == "y":
-        userCards.append(random.choice(cards))
-        userHasNewCard = True
+def clear_screen():
+    if platform.system().lower() == "windows":
+        subprocess.run("cls", shell=True)
     else:
-        userHasNewCard = False
+        subprocess.run("clear", shell=True)
