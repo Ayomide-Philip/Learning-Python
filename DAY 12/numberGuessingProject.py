@@ -1,5 +1,7 @@
 import random
+import art
 
+print(art.logo)
 print("Welcome To the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100")
 chooseLevel = input("Choose a difficulty. Type 'easy' or 'hard':").lower()
@@ -12,7 +14,6 @@ if chooseLevel == "easy":
 elif chooseLevel == "hard":
     numberOfAttempt = 5
     gameStarted = not gameStarted
-print(randomNumberChosen)
 
 while gameStarted:
     if numberOfAttempt > 0:
