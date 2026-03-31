@@ -10,7 +10,6 @@ def checkComputerTotalScore(computerCards, totalUserAceCards):
     while module.calculateTotalCards(computerCards) < 17:
         computerCards.append(random.choice(cards))
 
-    print(computerCards)
     if module.calculateTotalCards(computerCards) > 21:
         if computerCards.count(11) > 0:
             totalComputerAceCards = module.calculateTotalCardIfAce(computerCards)
@@ -19,36 +18,24 @@ def checkComputerTotalScore(computerCards, totalUserAceCards):
                 print(f"Computer Card: {computerCards}")
                 print("User Wins, Computer loose")
             else:
-                if totalComputerAceCards == totalUserAceCards:
-                    print(f"User Card: {userCards}")
-                    print(f"Computer Card: {computerCards}")
-                    print("Its a draw")
-                elif totalComputerAceCards > totalUserAceCards:
-                    print(f"User Card: {userCards}")
-                    print(f"Computer Card: {computerCards}")
-                    print("Computer Won, User Loose")
-                elif totalUserAceCards > totalComputerAceCards:
-                    print(f"User Card: {userCards}")
-                    print(f"Computer Card: {computerCards}")
-                    print("User Won, Computer Loose")
+                module.announce_winner(
+                    userScore=totalUserAceCards,
+                    computerScore=totalComputerAceCards,
+                    computerCards=computerCards,
+                    userCards=userCards,
+                )
         else:
             print(f"User Card: {userCards}")
             print(f"Computer Card: {computerCards}")
             print("Computer Loose, User Wins")
     else:
         totalComputerAceCards = module.calculateTotalCards(computerCards)
-        if totalComputerAceCards == totalUserAceCards:
-            print(f"User Card: {userCards}")
-            print(f"Computer Card: {computerCards}")
-            print("Its a draw")
-        elif totalComputerAceCards > totalUserAceCards:
-            print(f"User Card: {userCards}")
-            print(f"Computer Card: {computerCards}")
-            print("Computer Won, User Loose")
-        elif totalUserAceCards > totalComputerAceCards:
-            print(f"User Card: {userCards}")
-            print(f"Computer Card: {computerCards}")
-            print("User Won, Computer Loose")
+        module.announce_winner(
+            userScore=totalUserAceCards,
+            computerScore=totalComputerAceCards,
+            computerCards=computerCards,
+            userCards=userCards,
+        )
 
 
 while doYouWantToPlayBlackJade:
