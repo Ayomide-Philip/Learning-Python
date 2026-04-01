@@ -32,9 +32,12 @@ def generateBinaryNumberOfTheIpAddress(ipAddress=""):
     return {"ipv4": binaryIpAddress, "ipv4_list": binaryIpList}
 
 
-def generateSubnetMaskOfTheIpAddress(subnet = 0):
+def generateSubnetMaskOfTheIpAddress(subnet=0):
+    """This function generate the subnet of a particular ip Address for example, if you inputted 192.168.0.1/24:
+    it takes the /24 and generate the subnet that the network is running on.
+    """
     if int(subnet) > 32:
-        print("Subnet of an address cant be more than 32 bit")
+        print("Subnet of an address can't be more than 32 bit")
         return None
     binary_code_of_subnet = ""
     for i in range(1, 33):
@@ -47,3 +50,26 @@ def generateSubnetMaskOfTheIpAddress(subnet = 0):
             if i % 8 == 0 and i != 32:
                 binary_code_of_subnet += "."
     return binary_code_of_subnet
+
+
+def convertBinaryToReadableIpFormat(binary=""):
+    """This function convert binary back to ip address, and it also validates the new ip format generated to check if
+    it's a valid ip address by calling the function isIpAddressValid
+    """
+    binaryList = binary.split(".")
+    if len(binaryList) > 4:
+        print("An ipv4 Address cant have more than 3 dots")
+        return None
+    ipAddressList = []
+    for b in binaryList:
+        try:
+            binaryToInt = int(b, 2)
+        except ValueError:
+            print("Invalid Binary type")
+            return None
+        ipAddressList.append(str(binaryToInt))
+    ipAddrInStr = ".".join(ipAddressList)
+    if isValidIpv4Address(ipAddrInStr):
+        return ipAddrInStr
+    else:
+        return None

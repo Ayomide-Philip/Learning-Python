@@ -10,27 +10,6 @@ import module
 # print(module.generateSubnetMaskOfTheIpAddress(24))
 
 
-def convertBinaryToReadableIpFormat(binary=""):
-    """This function convert binary back to ip address, and it also validates the new ip format generated to check if
-    it's a valid ip address by calling the function isIpAddressValid
-    """
-    binaryList = binary.split(".")
-    if len(binaryList) > 4:
-        print("An ipv4 Address cant have more than 3 dots")
-        return None
-    ipAddressList = []
-    for b in binaryList:
-        try:
-            binaryToInt = int(b, 2)
-        except ValueError:
-            print("Invalid Binary type")
-            return None
-        ipAddressList.append(str(binaryToInt))
-    ipAddrInStr = ".".join(ipAddressList)
-    if module.isValidIpv4Address(ipAddrInStr):
-        return ipAddrInStr
-    else:
-        return None
 
 
-print(convertBinaryToReadableIpFormat(module.generateSubnetMaskOfTheIpAddress(24)))
+print(module.convertBinaryToReadableIpFormat(module.generateSubnetMaskOfTheIpAddress(24)))
