@@ -93,4 +93,4 @@ def totalNumberOfSubnetInANetwork(binaryOfSubnetList=None):
             doesOneExist = binary
             break
     totalNumberOfSubNet = 2 ** doesOneExist.count("1")
-    return totalNumberOfSubNet
+    return {"totalNumberOfSubNet": totalNumberOfSubNet}
