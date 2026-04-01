@@ -44,7 +44,6 @@ def totalNumberOfSubnetInANetwork(binaryOfSubnetList):
 
     for binary in binaryOfSubnetList:
         if binary.count("1") > 0 and binary.count("0") > 0:
-            print(binary)
             doesOneExist = binary
             break
     totalNumberOfSubNet = 2 ** doesOneExist.count("1")
