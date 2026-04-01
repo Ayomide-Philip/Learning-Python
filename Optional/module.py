@@ -31,3 +31,20 @@ def generateBinaryNumberOfTheIpAddress(ipAddress=""):
             binaryIpAddress += f'{format(int(address), "08b")}.'
 
     return {"ipv4": binaryIpAddress, "ipv4_list": binaryIpList}
+
+
+def generateSubnetMaskOfTheIpAddress(subnet):
+    if int(subnet) > 32:
+        print("Subnet of an address cant be more than 32 bit")
+        return None
+    binary_code_of_subnet = ""
+    for i in range(1, 33):
+        if i <= int(subnet):
+            binary_code_of_subnet += "1"
+            if i % 8 == 0 and i != 32:
+                binary_code_of_subnet += "."
+        else:
+            binary_code_of_subnet += "0"
+            if i % 8 == 0 and i != 32:
+                binary_code_of_subnet += "."
+    return binary_code_of_subnet
