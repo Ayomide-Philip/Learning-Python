@@ -1,23 +1,10 @@
-import ipaddress
+import module
 
 user_ipv4_input = input("Input An Ipv4 Address?e.g 192.168.0.1:\n")
 
 
-def isValidIpv4Address(address):
-    """This function would check if the inputted ip address is an ipv4"""
-    if address.count(".") > 3:
-        print(f"An ipv4 Address is supposed to have 3 dots")
-        return False
-    try:
-        ipaddress.IPv4Address(address)
-        print(f"{address} its an ipv4 Address")
-        return True
-    except ipaddress.AddressValueError:
-        print(f"{address} is not a valid ipv4 Address")
-        return False
-
-
 def generateBinaryNumberOfTheIpAddress(ipAddress=""):
+    """This function is used to generate the binary address of an ip address and also the subnet of the ip address"""
     if ipAddress.count(".") > 3:
         print("A valid Ipv4 Address should have 3 dots")
         return ""
@@ -34,5 +21,5 @@ def generateBinaryNumberOfTheIpAddress(ipAddress=""):
     return {"ipv4": binaryIpAddress, "ipv4_list": binaryIpList}
 
 
-# print(isValidIpv4Address(user_ipv4_input))
+print(module.isValidIpv4Address(user_ipv4_input))
 print(generateBinaryNumberOfTheIpAddress(user_ipv4_input))
