@@ -8,7 +8,6 @@ def isValidIpv4Address(address):
         return False
     try:
         ipaddress.IPv4Address(address)
-        print(f"{address} its an ipv4 Address")
         return True
     except ipaddress.AddressValueError:
         print(f"{address} is not a valid ipv4 Address")
@@ -33,7 +32,7 @@ def generateBinaryNumberOfTheIpAddress(ipAddress=""):
     return {"ipv4": binaryIpAddress, "ipv4_list": binaryIpList}
 
 
-def generateSubnetMaskOfTheIpAddress(subnet):
+def generateSubnetMaskOfTheIpAddress(subnet = 0):
     if int(subnet) > 32:
         print("Subnet of an address cant be more than 32 bit")
         return None

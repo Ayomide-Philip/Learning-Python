@@ -19,8 +19,12 @@ def convertBinaryToReadableIpFormat(binary=""):
         print("An ipv4 Address cant have more than 3 dots")
         return None
     ipAddressList = []
-    for binary in binaryList:
-        binaryToInt = int(binary, 2)
+    for b in binaryList:
+        try:
+            binaryToInt = int(b, 2)
+        except ValueError:
+            print("Invalid Binary type")
+            return None
         ipAddressList.append(str(binaryToInt))
     ipAddrInStr = ".".join(ipAddressList)
     if module.isValidIpv4Address(ipAddrInStr):
