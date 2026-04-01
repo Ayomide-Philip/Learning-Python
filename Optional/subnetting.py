@@ -1,25 +1,25 @@
 import module
 
-user_ipv4_input = input("Input An Ipv4 Address?e.g 192.168.0.1:\n")
+# user_ipv4_input = input(
+#     "Input An Ipv4 Address which you want to get the range of it's IP Address?e.g 192.168.0.1/24:\n"
+# )
 
 
-def generateBinaryNumberOfTheIpAddress(ipAddress=""):
-    """This function is used to generate the binary address of an ip address and also the subnet of the ip address"""
-    if ipAddress.count(".") > 3:
-        print("A valid Ipv4 Address should have 3 dots")
-        return ""
-    splitIpToList = ipAddress.split(".")
-    binaryIpList = []
-    binaryIpAddress = ""
-    for address in splitIpToList:
-        binaryIpList.append(format(int(address), "08b"))
-        if splitIpToList[-1] == address:
-            binaryIpAddress += f'{format(int(address), "08b")}'
+def generateSubnetMaskOfTheIpAddress(subnet):
+    if int(subnet) > 32:
+        print("Subnet of an address cant be more than 32 bit")
+        return
+    binary_code_of_subnet = ""
+    for i in range(1, 33):
+        if i <= int(subnet):
+            binary_code_of_subnet += "1"
+            if i % 8 == 0 and i != 32:
+                binary_code_of_subnet += "."
         else:
-            binaryIpAddress += f'{format(int(address), "08b")}.'
+            binary_code_of_subnet += "0"
+    print(binary_code_of_subnet)
 
-    return {"ipv4": binaryIpAddress, "ipv4_list": binaryIpList}
 
-
-print(module.isValidIpv4Address(user_ipv4_input))
-print(generateBinaryNumberOfTheIpAddress(user_ipv4_input))
+# print(module.isValidIpv4Address(user_ipv4_input))
+# print(module.generateBinaryNumberOfTheIpAddress(user_ipv4_input.split("/")[0]))
+generateSubnetMaskOfTheIpAddress(31)
