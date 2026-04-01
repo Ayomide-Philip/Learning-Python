@@ -6,6 +6,7 @@ import art
 
 
 def generate_starting_two_question():
+    """Generating two dictionary from the game data"""
     return random.choices(data, k=2)
 
 
