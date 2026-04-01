@@ -73,3 +73,24 @@ def convertBinaryToReadableIpFormat(binary=""):
         return ipAddrInStr
     else:
         return None
+
+
+def totalNumberOfSubnetInANetwork(binaryOfSubnetList=None):
+    """This function is used to get the total number of host in a network, it takes in a list as input and check if the
+    length of the list is more 4 then it returns an error and if not it get the total network available in that
+    particular range of ip address, the output is a string
+    """
+    if binaryOfSubnetList is None:
+        binaryOfSubnetList = []
+    doesOneExist = "00000000"
+
+    if len(binaryOfSubnetList) > 4:
+        print("It can only contain 4 byte of octet")
+        return None
+
+    for binary in binaryOfSubnetList:
+        if binary.count("1") > 0 and binary.count("0") > 0:
+            doesOneExist = binary
+            break
+    totalNumberOfSubNet = 2 ** doesOneExist.count("1")
+    return totalNumberOfSubNet

@@ -36,22 +36,8 @@ from module import generateSubnetMaskOfTheIpAddress
 # print(totalNumberOfHostInANetwork("8"))
 
 
-def totalNumberOfSubnetInANetwork(binaryOfSubnetList):
-    doesOneExist = "00000000"
-    if len(binaryOfSubnetList) > 4:
-        print("It can only contain 4 byte of octet")
-        return None
-
-    for binary in binaryOfSubnetList:
-        if binary.count("1") > 0 and binary.count("0") > 0:
-            doesOneExist = binary
-            break
-    totalNumberOfSubNet = 2 ** doesOneExist.count("1")
-    return totalNumberOfSubNet
-
-
 print(
-    totalNumberOfSubnetInANetwork(
+    module.totalNumberOfSubnetInANetwork(
         generateBinaryNumberOfTheIpAddress("255.255.255.252")["ipv4_list"]
     )
 )
