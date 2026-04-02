@@ -96,7 +96,7 @@ def totalNumberOfSubnetInANetwork(binaryOfSubnetList=None):
     return {"totalNumberOfSubNet": totalNumberOfSubNet}
 
 
-def totalNumberOfHostInANetwork(subnet=""):
+def totalNumberOfHostInASubNet(subnet=""):
     """This function returns the total numbers of host (Ip Addresses) available in a using the subnet to get it"""
     if int(subnet) > 32:
         print("The scope of an ipv4 can't pass 32 bit")
@@ -105,14 +105,14 @@ def totalNumberOfHostInANetwork(subnet=""):
     numberOfSubnet = totalNumberOfSubnetInANetwork(subNetInBinary.split("."))
     totalNumberOfHostBit = subNetInBinary.count("0")
     totalNumberOfHost = 2**totalNumberOfHostBit
-    totalNumberOfUsableHost = totalNumberOfHost - 2
+    totalNumberOfUsableHost = (totalNumberOfHost - 2) * int(
+        numberOfSubnet["totalNumberOfSubNet"]
+    )
 
     return {
         "totalNumberOfHostBit": format(totalNumberOfHostBit, ","),
         "totalNumberOfHostPerSubNet": format(totalNumberOfHost, ","),
-        "totalNumberOfUsableHostPerSubNet": format(totalNumberOfUsableHost, ","),
-        "totalNumberOfUsableHost": format(
-            256 - (2 * numberOfSubnet["totalNumberOfSubNet"]), ","
-        ),
+        "totalNumberOfUsableHostPerSubNet": format(totalNumberOfHost - 2, ","),
+        "totalNumberOfUsableHost": format(totalNumberOfUsableHost, ","),
         "totalNumberOfSubNet": format(numberOfSubnet["totalNumberOfSubNet"], ","),
     }

@@ -7,19 +7,19 @@ import module
 
 
 # print(module.isValidIpv4Address(user_ipv4_input))
-# print(module.generateBinaryNumberOfTheIpAddress("255.255.255.224"))
+# print(module.generateBinaryNumberOfTheIpAddress("255.255.254.0"))
 # print(module.generateSubnetMaskOfTheIpAddress(8))
 
 
-# print(module.convertBinaryToReadableIpFormat(module.generateSubnetMaskOfTheIpAddress(24)))
+# print(module.convertBinaryToReadableIpFormat("11111111.11111111.11110000.00000000"))
 
 
-# print(module.totalNumberOfHostInANetwork("26"))
+print(module.totalNumberOfHostInASubNet("20"))
 
 
 # print(
 #     module.totalNumberOfSubnetInANetwork(
-#         module.generateBinaryNumberOfTheIpAddress("255.255.255.252")["ipv4_list"]
+#         module.generateBinaryNumberOfTheIpAddress("255.255.248.0")["ipv4_list"]
 #     )
 # )
 
