@@ -1,4 +1,5 @@
 import module
+from module import totalNumberOfSubnetInANetwork
 from module import generateBinaryNumberOfTheIpAddress
 from module import generateSubnetMaskOfTheIpAddress
 
@@ -16,28 +17,11 @@ from module import generateSubnetMaskOfTheIpAddress
 # print(module.convertBinaryToReadableIpFormat(module.generateSubnetMaskOfTheIpAddress(24)))
 
 
-def totalNumberOfHostInANetwork(subnet=""):
-    if int(subnet) > 32:
-        print("The scope of an ipv4 can't pass 32 bit")
-        return None
-
-    totalNumberOfHostBit = generateSubnetMaskOfTheIpAddress(subnet).count("0")
-    print(totalNumberOfHostBit)
-    totalNumberOfHost = 2**totalNumberOfHostBit
-    totalNumberOfUsableHost = totalNumberOfHost - 2
-
-    return {
-        "totalNumberOfHostBit": format(totalNumberOfHostBit, ","),
-        "totalNumberOfHost": format(totalNumberOfHost, ","),
-        "totalNumberOfUsableHost": format(totalNumberOfUsableHost, ","),
-    }
+print(module.totalNumberOfHostInANetwork("26"))
 
 
-print(totalNumberOfHostInANetwork("30"))
-
-
-print(
-    module.totalNumberOfSubnetInANetwork(
-        generateBinaryNumberOfTheIpAddress("255.255.255.252")["ipv4_list"]
-    )
-)
+# print(
+#     module.totalNumberOfSubnetInANetwork(
+#         generateBinaryNumberOfTheIpAddress("255.255.255.252")["ipv4_list"]
+#     )
+# )
