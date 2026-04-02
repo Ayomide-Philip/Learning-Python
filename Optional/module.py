@@ -131,12 +131,16 @@ def getNetworkClass(ipAddress=""):
         return None
 
     ipClass = ""
+    subnet = ""
     if 0 <= int(first_part_of_ip_address) <= 127:
         ipClass = "A"
+        subnet = "255.0.0.0"
     elif 128 <= int(first_part_of_ip_address) <= 191:
         ipClass = "B"
+        subnet = "255.255.0.0"
     elif 192 <= int(first_part_of_ip_address) <= 223:
         ipClass = "C"
+        subnet = "255.255.255.0"
     elif 224 <= int(first_part_of_ip_address) <= 239:
         ipClass = "D"
     elif 240 <= int(first_part_of_ip_address) <= 255:
@@ -144,4 +148,4 @@ def getNetworkClass(ipAddress=""):
     else:
         return None
 
-    return {"class": ipClass}
+    return {"class": ipClass, "subnet": subnet}
