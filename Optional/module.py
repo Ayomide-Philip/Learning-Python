@@ -1,5 +1,6 @@
 import ipaddress
 
+
 def isValidIpv4Address(address):
     """This function would check if the inputted ip address is an ipv4"""
     if address.count(".") > 3:
@@ -143,3 +144,36 @@ def getNetworkClass(ipAddress=""):
         return None
 
     return {"class": ipClass, "subnet": subnet}
+
+
+def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
+    """This function is going to get the default subnet mask"""
+    if not isValidIpv4Address(ipAddress):
+        return None
+    # get the default subnet of the ip address class
+    if getNetworkClass(ipAddress)["subnet"] == "":
+        getIpSubNet = "255.255.255.0"
+    else:
+        getIpSubNet = getNetworkClass(ipAddress)["subnet"]
+    # use subnet gotten to generate the binary form
+    getBinaryOfTheSubNet = generateBinaryNumberOfTheIpAddress(getIpSubNet)["ipv4"]
+    if getBinaryOfTheSubNet.count("1") >= 32:
+        return None
+    numberOfHostBitNeeded = 1
+    while 2**numberOfHostBitNeeded < numberOfNetwork:
+        numberOfHostBitNeeded += 1
+    print(numberOfHostBitNeeded)
+    newNumberOfNetworkBit = getBinaryOfTheSubNet.count("1") + numberOfHostBitNeeded
+    print(newNumberOfNetworkBit)
+    if newNumberOfNetworkBit > 30:
+        print(f"You don't have 2 host bit left")
+        return None
+    newSubnetMask = convertBinaryToReadableIpFormat(
+        generateSubnetMaskOfTheIpAddress(newNumberOfNetworkBit)
+    )
+    newTotalNumberOfHost = totalNumberOfHostInASubNet(newNumberOfNetworkBit)
+    return {
+        **newTotalNumberOfHost,
+        "subnet": f"{newSubnetMask} or /{newNumberOfNetworkBit}",
+        "totalNumberOfSubNetCreated": 2**numberOfHostBitNeeded,
+    }

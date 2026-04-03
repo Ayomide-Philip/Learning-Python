@@ -30,38 +30,4 @@ from module import convertBinaryToReadableIpFormat
 # print(module.getNetworkClass("192.168.0.1"))
 
 
-def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
-    """This function is going to get the default subnet mask"""
-    if not module.isValidIpv4Address(ipAddress):
-        return None
-    # get the default subnet of the ip address class
-    if module.getNetworkClass(ipAddress)["subnet"] == "":
-        getIpSubNet = "255.255.255.0"
-    else:
-        getIpSubNet = module.getNetworkClass(ipAddress)["subnet"]
-    # use subnet gotten to generate the binary form
-    getBinaryOfTheSubNet = generateBinaryNumberOfTheIpAddress(getIpSubNet)["ipv4"]
-    if getBinaryOfTheSubNet.count("1") >= 32:
-        return None
-    numberOfHostBitNeeded = 1
-    while 2**numberOfHostBitNeeded < numberOfNetwork:
-        numberOfHostBitNeeded += 1
-    print(numberOfHostBitNeeded)
-    newNumberOfNetworkBit = getBinaryOfTheSubNet.count("1") + numberOfHostBitNeeded
-    print(newNumberOfNetworkBit)
-    if newNumberOfNetworkBit > 30:
-        print(f"You don't have 2 host bit left")
-        return None
-    newSubnetMask = convertBinaryToReadableIpFormat(
-        generateSubnetMaskOfTheIpAddress(newNumberOfNetworkBit)
-    )
-    newTotalNumberOfHost = totalNumberOfHostInASubNet(newNumberOfNetworkBit)
-    print(newSubnetMask)
-    return {
-        **newTotalNumberOfHost,
-        "subnet": f"{newSubnetMask} or /{newNumberOfNetworkBit}",
-        "totalNumberOfSubNetCreated": 2**numberOfHostBitNeeded,
-    }
-
-
-print(subNetANetworkUsingDefaultNetMask("192.168.0.1", 20))
+print(module.subNetANetworkUsingDefaultNetMask("192.168.0.1", 20))
