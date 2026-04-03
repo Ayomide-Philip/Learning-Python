@@ -1,5 +1,5 @@
 import module
-
+from module import generateBinaryNumberOfTheIpAddress
 
 # user_ipv4_input = input(
 #     "Input An Ipv4 Address which you want to get the range of its IP Address?e.g 192.168.0.1/24:\n"
@@ -14,7 +14,7 @@ import module
 # print(module.convertBinaryToReadableIpFormat("11111111.11111111.11110000.00000000"))
 
 
-print(module.totalNumberOfHostInASubNet("20"))
+# print(module.totalNumberOfHostInASubNet("20"))
 
 
 # print(
@@ -24,4 +24,20 @@ print(module.totalNumberOfHostInASubNet("20"))
 # )
 
 
-print(module.getNetworkClass("192.168.0.1"))
+# print(module.getNetworkClass("192.168.0.1"))
+
+
+def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
+    """This function is going to get the default subnet mask"""
+    if not module.isValidIpv4Address(ipAddress):
+        return
+    # get the default subnet of the ip address class
+    if module.getNetworkClass(ipAddress)["subnet"] == "":
+        getIpSubNet = "255.255.255.0"
+    else:
+        getIpSubNet = module.getNetworkClass(ipAddress)["subnet"]
+    getBinaryOfTheSubNet = generateBinaryNumberOfTheIpAddress(getIpSubNet)["ipv4"]
+    print(getBinaryOfTheSubNet)
+
+
+subNetANetworkUsingDefaultNetMask("128.180.0.1", 2)

@@ -1,4 +1,5 @@
 import ipaddress
+from os.path import join
 
 
 def isValidIpv4Address(address):
@@ -21,14 +22,9 @@ def generateBinaryNumberOfTheIpAddress(ipAddress=""):
         return ""
     splitIpToList = ipAddress.split(".")
     binaryIpList = []
-    binaryIpAddress = ""
     for address in splitIpToList:
         binaryIpList.append(format(int(address), "08b"))
-        if splitIpToList[-1] == address:
-            binaryIpAddress += f'{format(int(address), "08b")}'
-        else:
-            binaryIpAddress += f'{format(int(address), "08b")}.'
-
+    binaryIpAddress = ".".join(binaryIpList)
     return {"ipv4": binaryIpAddress, "ipv4_list": binaryIpList}
 
 
