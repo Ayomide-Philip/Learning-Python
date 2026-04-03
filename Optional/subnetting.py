@@ -57,7 +57,11 @@ def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
     )
     newTotalNumberOfHost = totalNumberOfHostInASubNet(newNumberOfNetworkBit)
     print(newSubnetMask)
-    return {**newTotalNumberOfHost, "subnet": f'{newSubnetMask} or /{newNumberOfNetworkBit}'}
+    return {
+        **newTotalNumberOfHost,
+        "subnet": f"{newSubnetMask} or /{newNumberOfNetworkBit}",
+        "totalNumberOfSubNetCreated": 2**numberOfHostBitNeeded,
+    }
 
 
 print(subNetANetworkUsingDefaultNetMask("192.168.0.1", 20))
