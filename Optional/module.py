@@ -125,7 +125,6 @@ def getNetworkClass(ipAddress=""):
     if len(first_part_of_ip_address) == 0:
         return None
 
-    ipClass = ""
     subnet = ""
     if 0 <= int(first_part_of_ip_address) <= 127:
         ipClass = "A"
@@ -147,7 +146,11 @@ def getNetworkClass(ipAddress=""):
 
 
 def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
-    """This function is going to get the default subnet mask"""
+    """This function is going to get the default subnet mask of the inputted IP address and assign 255.255.255.0 if the
+    ip doesn't have a netmask, after it get the total number of host bit's needed for the subnet to be created which is
+    gotten from the total number of network the user needs, but since in binary the computer only understands it in
+    powers of 2's it going to get the host bit by 2^n <= total number of network needed
+    """
     if not isValidIpv4Address(ipAddress):
         return None
     # get the default subnet of the ip address class
@@ -174,6 +177,7 @@ def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
     newTotalNumberOfHost = totalNumberOfHostInASubNet(newNumberOfNetworkBit)
     return {
         **newTotalNumberOfHost,
-        "subnet": f"{newSubnetMask} or /{newNumberOfNetworkBit}",
+        "subnet": f"{newSubnetMask}",
+        "cidrNotation": f"/{newNumberOfNetworkBit}",
         "totalNumberOfSubNetCreated": 2**numberOfHostBitNeeded,
     }
