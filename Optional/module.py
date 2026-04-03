@@ -91,7 +91,7 @@ def totalNumberOfSubnetInANetwork(binaryOfSubnetList=None):
     return {"totalNumberOfSubNet": totalNumberOfSubNet}
 
 
-def totalNumberOfHostInASubNet(subnet=""):
+def totalNumberOfHostInASubNet(subnet=0):
     """This function returns the total numbers of host (Ip Addresses) available in a using the subnet to get it"""
     if int(subnet) > 32:
         print("The scope of an ipv4 can't pass 32 bit")
