@@ -108,7 +108,7 @@ def totalNumberOfHostInASubNet(subnet=""):
         "totalNumberOfHostPerSubNet": format(totalNumberOfHost, ","),
         "totalNumberOfUsableHostPerSubNet": format(totalNumberOfHost - 2, ","),
         "totalNumberOfUsableHost": format(totalNumberOfUsableHost, ","),
-        "totalNumberOfSubNet": format(numberOfSubnet["totalNumberOfSubNet"], ","),
+        # "totalNumberOfSubNet": format(numberOfSubnet["totalNumberOfSubNet"], ","),
     }
 
 
