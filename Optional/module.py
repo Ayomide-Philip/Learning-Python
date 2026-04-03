@@ -1,6 +1,4 @@
 import ipaddress
-from os.path import join
-
 
 def isValidIpv4Address(address):
     """This function would check if the inputted ip address is an ipv4"""

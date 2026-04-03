@@ -8,7 +8,7 @@ from module import generateBinaryNumberOfTheIpAddress
 
 # print(module.isValidIpv4Address(user_ipv4_input))
 # print(module.generateBinaryNumberOfTheIpAddress("255.255.254.0"))
-# print(module.generateSubnetMaskOfTheIpAddress(8))
+# print(module.generateSubnetMaskOfTheIpAddress(20))
 
 
 # print(module.convertBinaryToReadableIpFormat("11111111.11111111.11110000.00000000"))
@@ -36,8 +36,19 @@ def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
         getIpSubNet = "255.255.255.0"
     else:
         getIpSubNet = module.getNetworkClass(ipAddress)["subnet"]
+    # use subnet gotten to generate the binary form
     getBinaryOfTheSubNet = generateBinaryNumberOfTheIpAddress(getIpSubNet)["ipv4"]
-    print(getBinaryOfTheSubNet)
+    if getBinaryOfTheSubNet.count("1") >= 32:
+        return
+    numberOfHostBitNeeded = 1
+    while 2**numberOfHostBitNeeded < numberOfNetwork:
+        numberOfHostBitNeeded += 1
+    print(numberOfHostBitNeeded)
+    newNumberOfNetworkBit = getBinaryOfTheSubNet.count("1") + numberOfHostBitNeeded
+    print(newNumberOfNetworkBit)
+    if newNumberOfNetworkBit > 30:
+        print(f"You don't have 2 host bit left")
+        return
 
 
-subNetANetworkUsingDefaultNetMask("128.180.0.1", 2)
+subNetANetworkUsingDefaultNetMask("192.168.0.1", 20)
