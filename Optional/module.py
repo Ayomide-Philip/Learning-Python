@@ -181,3 +181,31 @@ def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
         "cidrNotation": f"/{newNumberOfNetworkBit}",
         "totalNumberOfSubNetCreated": 2**numberOfHostBitNeeded,
     }
+
+
+def subNetNetworkUsingCustomNetMask(subnet=0, numberOfNetwork=0):
+    if subnet > 32:
+        print("Invalid netmask address")
+        return None
+    currentSubnetToBinary = generateSubnetMaskOfTheIpAddress(subnet)
+    print(currentSubnetToBinary)
+    if currentSubnetToBinary.count("1") > 30:
+        print("Network can't be extended need at least 2 host bit")
+        return None
+    numberOfHostBitNeeded = 1
+    while 2**numberOfHostBitNeeded < numberOfNetwork:
+        numberOfHostBitNeeded += 1
+    totalNumberOfNetworkBit = currentSubnetToBinary.count("1") + numberOfHostBitNeeded
+    if totalNumberOfNetworkBit > 30:
+        print("Network can't be extended need at least 2 host bit")
+        return None
+    newTotalNumberOfHost = totalNumberOfHostInASubNet(totalNumberOfNetworkBit)
+    newSubnetMask = convertBinaryToReadableIpFormat(
+        generateSubnetMaskOfTheIpAddress(totalNumberOfNetworkBit)
+    )
+    return {
+        **newTotalNumberOfHost,
+        "subnet": newSubnetMask,
+        "totalNumberOfSubnetCreated": 2**numberOfHostBitNeeded,
+        "cidrNotation": f"/{totalNumberOfNetworkBit}",
+    }
