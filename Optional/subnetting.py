@@ -33,4 +33,4 @@ from module import convertBinaryToReadableIpFormat
 # print(module.subNetANetworkUsingDefaultNetMask("192.168.0.1", 20))
 
 
-print(module.subNetNetworkUsingCustomNetMask(24, 10))
+print(module.subNetNetworkUsingCustomNetMask(20, 10))

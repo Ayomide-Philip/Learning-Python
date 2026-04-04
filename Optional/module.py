@@ -184,11 +184,14 @@ def subNetANetworkUsingDefaultNetMask(ipAddress="", numberOfNetwork=0):
 
 
 def subNetNetworkUsingCustomNetMask(subnet=0, numberOfNetwork=0):
+    """This function is used to generate some bunch of useful information by taking in the subnet in cidr notation and
+    the total number of network you want to create, to give you details you would need about the network, it returns the
+    new subnet mask of the network and it cidr notation and total number of the subnet created with some other information
+    """
     if subnet > 32:
         print("Invalid netmask address")
         return None
     currentSubnetToBinary = generateSubnetMaskOfTheIpAddress(subnet)
-    print(currentSubnetToBinary)
     if currentSubnetToBinary.count("1") > 30:
         print("Network can't be extended need at least 2 host bit")
         return None
