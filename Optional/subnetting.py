@@ -17,7 +17,7 @@ from module import convertBinaryToReadableIpFormat
 # print(module.convertBinaryToReadableIpFormat("11111111.11111111.11110000.00000000"))
 
 
-# print(module.totalNumberOfHostInASubNet("20"))
+# print(module.totalNumberOfHostInASubNet("21"))
 
 
 # print(
@@ -33,4 +33,4 @@ from module import convertBinaryToReadableIpFormat
 # print(module.subNetANetworkUsingDefaultNetMask("192.168.0.1", 20))
 
 
-print(module.subNetNetworkUsingCustomNetMask(20, 10))
+# print(module.subNetNetworkUsingCustomNetMask(20, 10))

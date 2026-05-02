@@ -2,3 +2,5 @@
 .git
 desktop.*
 __pycache__
+
+.venv
